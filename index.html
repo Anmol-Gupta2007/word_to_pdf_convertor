@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word to PDF Converter</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Mammoth.js to convert .docx to HTML -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
+    
+    <!-- html2pdf.js to render HTML into PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <!-- JSZip for bundling multiple PDFs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📄 Word to PDF Converter</h1>
+            <p>Upload Word (.docx) files, preview documents, remove unwanted ones, and download as PDF or ZIP.</p>
+        </header>
+        
+        <div class="upload-area" id="upload-area">
+            <input type="file" id="file-input" accept=".docx,application/vnd.openxmlformats-officedocument.wordprocessingml.document" multiple hidden>
+            <button class="upload-btn" onclick="document.getElementById('file-input').click()">Choose Word Files</button>
+            <p>or drag and drop your .docx files here</p>
+        </div>
+
+        <div id="loading-status" class="loading-status" style="display: none;">
+            ⏳ Converting Word documents to PDF...
+        </div>
+
+        <div id="actions-container" style="display: none;">
+            <div class="actions-wrapper">
+                <button id="download-all-btn" class="download-all-btn">⬇️ Download All PDFs</button>
+                <button id="download-zip-btn" class="download-zip-btn">🗂️ Download as ZIP</button>
+            </div>
+        </div>
+
+        <div id="output-container" class="output-grid"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
